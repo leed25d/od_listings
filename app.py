@@ -1,4 +1,5 @@
 import os
+import dumper
 from flask import Flask
 from flask.ext.sqlalchemy import SQLAlchemy
 
@@ -24,7 +25,7 @@ def listings():
     ary= Listings.query.all()
     for r in range(50):
         pass
-    ret='listings %d rows' % (len(ary))
+    ret= dumper.dump(ary(:50))
     return ret
 
 if __name__ == '__main__':
