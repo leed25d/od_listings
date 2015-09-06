@@ -25,7 +25,7 @@ def listings():
     ary= Listings.query.all()
     for r in range(50):
         pass
-    ret= dumper.dump(ary[:50])
+    ret= dumper.dump(ary[0])
     return ret
 
 if __name__ == '__main__':
