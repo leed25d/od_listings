@@ -9,7 +9,8 @@ The listing.csv file was uploaded into a prostgres database for persistance
 ##Using the API
 
 The API a single endpoint:  
-    GET /listings : returns a json coded list of entries from the database
+
+>    GET /listings : returns a json coded list of entries from the database
 
 These query args are accepted:  
 
