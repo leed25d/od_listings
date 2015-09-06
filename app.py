@@ -35,7 +35,8 @@ def listings():
                               properties={})
         try:
             print "properties %s" % (dumper.dumps(ary[r]))
-            feature.properties= {k:ary[r][k] for k in feat_props}
+            ##feature.properties= {k:ary[r][k] for k in feat_props}
+            feature.properties= {k:getettr(ary[r], k) for k in feat_props}
         except Exception, e:
             print "properties exception %s" % (e)
 
