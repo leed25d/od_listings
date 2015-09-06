@@ -22,7 +22,7 @@ def hello():
 @app.route('/listings')
 def listings():
     ret=''
-    ary= Listing.query.all()
+    ary= Listings.query.all()
     return "%d rows" % (len(ary))
 
     for r in range(50):
