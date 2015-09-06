@@ -25,6 +25,7 @@ I added the 'status' field to the output properties even though it was not in th
 
 ##Other features
     -  add filtering on status (sold, pending, etc)
+    -  add filtering for house is inside of some geoJSON polygon
     -  some kind of aggregating / sorting functionality
     -  DRY up the filtering
     -  Unit testing
