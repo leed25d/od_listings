@@ -20,35 +20,19 @@ class Listing(db.Model):
 def hello():
     return "Hello World!"
 
-##feat_props= ("id", "price", "street", "bedrooms", "bathrooms", "sq_ft")
-feat_props= ("id", "price", "bedrooms", "bathrooms", "sq_ft")
+feat_props= ("id", "price", "street", "status", "bedrooms", "bathrooms", "sq_ft")
 
 @app.route('/listings')
 def listings():
     ary= Listing.query.all()
-    ##print "ary has %d entries" % (len(ary))
     features= list()
-    ##print "collection has %d entries" % (len(collection))
     for r in range(2):
-        print "r= %d" %(r)
-        feature = Feature(geometry=Point((ary[r].long, ary[r].lat)), 
-                              properties={})
-        try:
-            print "properties %s" % (dumper.dumps(ary[r]))
-            ##feature.properties= {k:ary[r][k] for k in feat_props}
-            feature.properties= {k:getattr(ary[r], k) for k in feat_props}
-        except Exception, e:
-            print "properties exception %s" % (e)
-
-        dumper.dump(feature)
+        feature = Feature(geometry=Point((ary[r].long, ary[r].lat)))
+        feature.properties= {k:getattr(ary[r], k) for k in feat_props}
         features.append(feature)
     
-    try:
-        collection= FeatureCollection(features)
-    except Exception, e:
-        print "collection exception %s" % (e)
+    collection= FeatureCollection(features)
     retcode= jsonify(collection)
-    print retcode
     return(retcode)
 
 if __name__ == '__main__':
