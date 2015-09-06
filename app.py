@@ -24,7 +24,7 @@ def listings():
             l_query= l_query.filter('min_price' >= min_price)
         max_price= request.args.get('max_price', type=int)
         if max_price is not None:
-            l_query= l_query.filter(Listing.max_price <= max_price)
+            l_query= l_query.filter('max_price' <= max_price)
 
 ##        min_bed= request.args.get('min_bed', type=int)
 ##        if min_bed is not None:
