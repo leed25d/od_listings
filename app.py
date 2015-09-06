@@ -18,13 +18,13 @@ feat_props= ("id", "price", "street", "status", "bedrooms", "bathrooms", "sq_ft"
 def listings():
     ##ary= Listing.query.all()
     try:
-        l_query= Listing.query
+        l_query= db.session.query(Listing)
         min_price= request.args.get('min_price', type=int)
         if min_price is not None:
-            l_query= l_query.filter('min_price' >= min_price)
+            l_query= l_query.filter(Listing.min_price >= min_price)
         max_price= request.args.get('max_price', type=int)
         if max_price is not None:
-            l_query= l_query.filter('max_price' <= max_price)
+            l_query= l_query.filter(Listing.max_price  <= max_price)
 
 ##        min_bed= request.args.get('min_bed', type=int)
 ##        if min_bed is not None:
@@ -44,6 +44,9 @@ def listings():
         print "exception %s" % (str(e))
 
     features= list()
+    q_list= l_query.all()
+    dumper.dump(q_list)
+
     for r in l_query.all():
         feature = Feature(geometry=Point((ary[r].long, ary[r].lat)))
         feature.properties= {k:getattr(ary[r], k) for k in feat_props}
