@@ -25,16 +25,15 @@ feat_props= ("id", "price", "street", "bedrooms", "bathrooms", "sq_ft")
 @app.route('/listings')
 def listings():
     ary= Listing.query.all()
-    print "ary has %d entries" % (len(ary))
-    collection= FeatureCollection()
-    print "collection has %d entries" % (len(collection))
+    ##print "ary has %d entries" % (len(ary))
+    features= list()
+    ##print "collection has %d entries" % (len(collection))
     for r in range(2):
         feature = Feature(geometry=Point(ary[r].long, ary[r].lat))
         feature.properties= {k:r[k] for k in feat_props}
-        dumper.dump(feature)
-        collection.append(feature)
-
-    return(jsonify(collection))
+        features.append(feature)
+    collection= FeaturesCollection(features)
+    return(jsonify(collection)
 
 if __name__ == '__main__':
     app.run()
