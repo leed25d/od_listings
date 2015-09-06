@@ -12,7 +12,7 @@ db = SQLAlchemy(app)
 
 class Listings(db.Model):
     __tablename__ = 'listings'
- 
+    id = db.Column(db.Integer, primary_key=True)
 
 @app.route('/')
 def hello():
