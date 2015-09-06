@@ -10,6 +10,7 @@ from sqlalchemy.ext.declarative import declarative_base
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
 db = SQLAlchemy(app)
+db.reflect()
 
 class Listings(db.Model):
     __tablename__ = 'listings'
