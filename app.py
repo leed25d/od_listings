@@ -21,10 +21,10 @@ def hello():
 
 @app.route('/listings')
 def listings():
-    ret=''
     ary= Listings.query.all()
     for r in range(50):
-        ret += str(ary[r])
+        pass
+    ret='listings %d rows' % (len(ary))
     return ret
 
 if __name__ == '__main__':
