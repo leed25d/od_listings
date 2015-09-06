@@ -1,11 +1,12 @@
 import os
 import dumper
-from flask import Flask
+from flask import Flask, jsonify
 from flask.ext.sqlalchemy import SQLAlchemy
+from geojson import Feature, Point, FeatureCollection
 
-from sqlalchemy import *
-from sqlalchemy.orm import *
-from sqlalchemy.ext.declarative import declarative_base
+##  from sqlalchemy import *
+##  from sqlalchemy.orm import *
+##  from sqlalchemy.ext.declarative import declarative_base
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
@@ -19,14 +20,18 @@ class Listing(db.Model):
 def hello():
     return "Hello World!"
 
+feat_props= ("id", "price", "street", "bedrooms", "bathrooms", "sq_ft")
 
 @app.route('/listings')
 def listings():
     ary= Listing.query.all()
-    for r in range(50):
-        pass
-    ret= dumper.dump(ary[0])
-    return ret
+    collection= FeatureCollection()
+    for r in range(2):
+        feature = Feature(geometry=Point(ary[r].long, ary[r].lat))
+        feature.properties= {k:r[k] for k in feat_props}
+        collection.append(feature)
+
+    return(jsonify(collection))
 
 if __name__ == '__main__':
     app.run()
