@@ -45,10 +45,12 @@ def listings():
         features.append(feature)
     
     try:
-        collection= FeaturesCollection(features)
+        collection= FeatureCollection(features)
     except Exception, e:
         print "collection exception %s" % (e)
-    return(jsonify(collection))
+    retcode= jsonify(collection)
+    print retcode
+    return(retcode)
 
 if __name__ == '__main__':
     app.run()
