@@ -20,7 +20,7 @@ def hello():
 
 
 @app.route('/listings')
-def listings(name):
+def listings():
     ret=''
     ary= Listing.query.all()
     for r in range(50):
