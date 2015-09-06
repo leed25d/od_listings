@@ -26,6 +26,7 @@ feat_props= ("id", "price", "street", "bedrooms", "bathrooms", "sq_ft")
 def listings():
     ary= Listing.query.all()
     collection= FeatureCollection()
+    print "collection has %d entries" % (len(collection))
     for r in range(2):
         feature = Feature(geometry=Point(ary[r].long, ary[r].lat))
         feature.properties= {k:r[k] for k in feat_props}
