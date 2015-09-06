@@ -14,6 +14,10 @@ class Listing(db.Model):
 
 feat_props= ("id", "price", "street", "status", "bedrooms", "bathrooms", "sq_ft")
 
+@app.route('/')
+def hello():
+    return "Hello World!"
+
 @app.route('/listings')
 def listings():
     l_query= Listing.query
