@@ -23,6 +23,8 @@ def hello():
 def listings():
     ret=''
     ary= Listing.query.all()
+    return "%d rows" % (len(ary))
+
     for r in range(50):
         ret += str(ary[r])
     return ret
