@@ -33,6 +33,7 @@ def listings():
         feature = Feature(geometry=Point((ary[r].long, ary[r].lat)), 
                               properties={})
         try:
+            print "properties %s" % (dumper.dumps(ary[r]))
             feature.properties= {k:ary[r][k] for k in feat_props}
         except Exception, e:
             print "properties exception %s" % (e)
