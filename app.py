@@ -25,7 +25,7 @@ def listings():
     ary= Listing.query.all()
     for r in range(50):
         ret += str(ary[r])
-    return r
+    return ret
 
 if __name__ == '__main__':
     app.run()
