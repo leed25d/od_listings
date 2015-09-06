@@ -33,7 +33,7 @@ def listings():
         feature.properties= {k:r[k] for k in feat_props}
         features.append(feature)
     collection= FeaturesCollection(features)
-    return(jsonify(collection)
+    return(jsonify(collection))
 
 if __name__ == '__main__':
     app.run()
