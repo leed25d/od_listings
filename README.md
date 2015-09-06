@@ -1,6 +1,6 @@
 ##Heroku Service:
 
-[Heroku Link](https://still-island-5342.herokuapp.com/listings?min_price=100000&max_price=101000&min_beds=2&max_beds=4)
+[Example Request](https://still-island-5342.herokuapp.com/listings?min_price=100000&max_price=101000&min_beds=2&max_beds=4)
 
 ##Database
 
