@@ -29,8 +29,11 @@ def listings():
     features= list()
     ##print "collection has %d entries" % (len(collection))
     for r in range(2):
-        feature = Feature(geometry=Point(ary[r].long, ary[r].lat))
+        print "r= %d" %(r)
+        feature = Feature(geometry=Point(ary[r].long, ary[r].lat), 
+                          properties={})
         feature.properties= {k:r[k] for k in feat_props}
+        dumper.dump(feature)
         features.append(feature)
     collection= FeaturesCollection(features)
     return(jsonify(collection))
