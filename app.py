@@ -42,17 +42,21 @@ def listings():
 
     except Exception, e:
         print "exception %s" % (str(e))
+    try:
+        features= list()
+        q_list= l_query.all()
+        ##print "%d entried: %s" % (len(q_list), dumper.dumps(q_list))
 
-    features= list()
-    q_list= l_query.all()
-    print "%d entried: %s" % (len(q_list), dumper.dumps(q_list))
+        for r in q_list:
+            feature = Feature(geometry=Point((ary[r].long, ary[r].lat)))
+            feature.properties= {k:getattr(ary[r], k) for k in feat_props}
+            features.append(feature)
 
-    for r in l_query.all():
-        feature = Feature(geometry=Point((ary[r].long, ary[r].lat)))
-        feature.properties= {k:getattr(ary[r], k) for k in feat_props}
-        features.append(feature)
-    
-    retcode= jsonify(FeatureCollection(features))
+        retcode= jsonify(FeatureCollection(features))
+
+    except Exception, e:
+        print "exception2 %s" % (str(e))
+
     return(retcode)
 
 if __name__ == '__main__':
