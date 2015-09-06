@@ -12,9 +12,9 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
 db = SQLAlchemy(app)
 db.reflect()
 
-class Listings(db.Model):
+class Listing(db.Model):
     __tablename__ = 'listings'
-    id = db.Column(db.Integer, primary_key=True)
+    ##id = db.Column(db.Integer, primary_key=True)
 
 @app.route('/')
 def hello():
