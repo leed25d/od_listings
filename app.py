@@ -20,7 +20,8 @@ class Listing(db.Model):
 def hello():
     return "Hello World!"
 
-feat_props= ("id", "price", "street", "bedrooms", "bathrooms", "sq_ft")
+##feat_props= ("id", "price", "street", "bedrooms", "bathrooms", "sq_ft")
+feat_props= ("id", "price", "bedrooms", "bathrooms", "sq_ft")
 
 @app.route('/listings')
 def listings():
