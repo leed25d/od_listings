@@ -29,6 +29,7 @@ def listings():
     for r in range(2):
         feature = Feature(geometry=Point(ary[r].long, ary[r].lat))
         feature.properties= {k:r[k] for k in feat_props}
+        dumper.dump(feature)
         collection.append(feature)
 
     return(jsonify(collection))
