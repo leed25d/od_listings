@@ -47,7 +47,7 @@ def listings():
         ary= l_query.all()
         ##print "%d entried: %s" % (len(q_list), dumper.dumps(q_list))
 
-        for r in ary:
+        for r, entry in enumerate(ary):
             feature = Feature(geometry=Point((ary[r].long, ary[r].lat)))
             feature.properties= {k:getattr(ary[r], k) for k in feat_props}
             features.append(feature)
