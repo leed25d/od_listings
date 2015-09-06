@@ -30,12 +30,24 @@ def listings():
     ##print "collection has %d entries" % (len(collection))
     for r in range(2):
         print "r= %d" %(r)
-        feature = Feature(geometry=Point((ary[r].long, ary[r].lat)), 
-                          properties={})
-        feature.properties= {k:r[k] for k in feat_props}
+        try:
+            feature = Feature(geometry=Point((ary[r].long, ary[r].lat)), 
+                              properties={})
+        except Exception, e:
+            print "Feature exception %s" % (e)
+
+        try:
+            feature.properties= {k:r[k] for k in feat_props}
+        except Exception, e:
+            print "properties exception %s" % (e)
+
         dumper.dump(feature)
         features.append(feature)
-    collection= FeaturesCollection(features)
+    
+    try:
+        collection= FeaturesCollection(features)
+    except Exception, e:
+        print "collection exception %s" % (e)
     return(jsonify(collection))
 
 if __name__ == '__main__':
