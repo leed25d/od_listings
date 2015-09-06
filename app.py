@@ -25,6 +25,7 @@ feat_props= ("id", "price", "street", "bedrooms", "bathrooms", "sq_ft")
 @app.route('/listings')
 def listings():
     ary= Listing.query.all()
+    print "ary has %d entries" % (len(ary))
     collection= FeatureCollection()
     print "collection has %d entries" % (len(collection))
     for r in range(2):
