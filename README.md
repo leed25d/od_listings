@@ -1,6 +1,6 @@
 ##Heroku Service:
 
-[Heroku Link](https://still-island-5342.herokuapp.com/)
+[Heroku Link](https://still-island-5342.herokuapp.com/listings)
 
 ##Database
 
