@@ -30,14 +30,10 @@ def listings():
     ##print "collection has %d entries" % (len(collection))
     for r in range(2):
         print "r= %d" %(r)
-        try:
-            feature = Feature(geometry=Point((ary[r].long, ary[r].lat)), 
+        feature = Feature(geometry=Point((ary[r].long, ary[r].lat)), 
                               properties={})
-        except Exception, e:
-            print "Feature exception %s" % (e)
-
         try:
-            feature.properties= {k:r[k] for k in feat_props}
+            feature.properties= {k:ary[r][k] for k in feat_props}
         except Exception, e:
             print "properties exception %s" % (e)
 
